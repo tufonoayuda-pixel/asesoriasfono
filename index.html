@@ -246,8 +246,8 @@
                             <select id="tipo" name="tipo" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
                                 <option value="">Seleccionar tipo...</option>
                                 <option value="Análisis de Casos">Análisis de Casos</option>
-                                <option value="Orientaciones en la Planificación Terapéutica">Planificación Terapéutica</option>
-                                <option value="Simulación de Defensa de Casos Clínicos">Simulación de Defensa</option>
+                                <option value="Planificación Terapéutica">Planificación Terapéutica</option>
+                                <option value="Simulación de Defensa">Simulación de Defensa</option>
                             </select>
                         </div>
                     </div>
@@ -299,187 +299,121 @@
     </footer>
 
     <script>
-        // ✅ Inicializar EmailJS con tu clave pública real
+        // ✅ Inicializar EmailJS con clave pública
         (function(){
-            emailjs.init("symCTdiXs_V4wtCaj"); // ¡ESTÁ CONFIGURADO!
+            emailjs.init("symCTdiXs_V4wtCaj");
         })();
-
-        // Crear más iconos dinámicamente para efecto continuo
-        function createFallingIcon() {
-            const icons = [
-                'fas fa-microphone', 'fas fa-brain', 'fas fa-comments', 'fas fa-stethoscope',
-                'fas fa-heartbeat', 'fas fa-user-md', 'fas fa-pills', 'fas fa-lungs',
-                'fas fa-hand-holding-heart', 'fas fa-smile', 'fas fa-utensils',
-                'fas fa-language', 'fas fa-ear-listen', 'fas fa-volume-high',
-                'fas fa-head-side-virus', 'fas fa-puzzle-piece', 'fas fa-child',
-                'fas fa-graduation-cap', 'fas fa-clipboard-list'
-            ];
-            
-            const speeds = ['slow', 'medium', 'fast'];
-            const container = document.querySelector('.falling-icons');
-            
-            if (container) {
-                const icon = document.createElement('i');
-                icon.className = `falling-icon ${icons[Math.floor(Math.random() * icons.length)]} ${speeds[Math.floor(Math.random() * speeds.length)]}`;
-                icon.style.left = Math.random() * 100 + '%';
-                icon.style.animationDelay = '0s';
-                
-                container.appendChild(icon);
-                
-                // Remover el icono después de la animación
-                setTimeout(() => {
-                    if (icon.parentNode) {
-                        icon.parentNode.removeChild(icon);
-                    }
-                }, 15000);
-            }
-        }
-
-        // Crear iconos cada cierto tiempo
-        setInterval(createFallingIcon, 2000);
 
         // Animación de scroll suave
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
-                target.scrollIntoView({
-                    behavior: 'smooth'
-                });
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
             });
         });
 
-        // Manejo del formulario con envío de email
+        // ✅ FORMULARIO CORREGIDO - Sin variables problemáticas
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
             const button = this.querySelector('button[type="submit"]');
             const originalText = button.innerHTML;
+            const form = this;
             
             // Mostrar estado de carga
             button.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Enviando...';
             button.disabled = true;
             
-            // Recopilar datos del formulario
+            // Obtener datos del formulario
             const formData = new FormData(this);
-            const data = {
-                nombre: formData.get('nombre'),
-                email: formData.get('email'),
-                telefono: formData.get('telefono'),
-                area: formData.get('area'),
-                tipo: formData.get('tipo'),
-                mensaje: formData.get('mensaje'),
-                fecha_solicitud: new Date().toLocaleDateString('es-CL'),
-                hora_solicitud: new Date().toLocaleTimeString('es-CL')
-            };
             
-            // Crear el mensaje completo para el email
-            const mensajeCompleto = `
-Nueva Solicitud de Asesoría Fonoaudiológica
-
-📋 DATOS DEL CLIENTE:
-• Nombre: ${data.nombre}
-• Email: ${data.email}
-• Teléfono: ${data.telefono}
-• Fecha de solicitud: ${data.fecha_solicitud}
-• Hora de solicitud: ${data.hora_solicitud}
-
-🎯 DETALLES DE LA ASESORÍA:
-• Área de interés: ${data.area}
-• Tipo de asesoría: ${data.tipo}
-
-💬 MENSAJE ADICIONAL:
-${data.mensaje}
-
----
-Solicitud generada automáticamente desde el sitio web de asesorías fonoaudiológicas.
-            `;
-
-            // Parámetros para EmailJS
+            // ✅ Variables simplificadas y limpias
             const templateParams = {
-                to_email: 'flgo.sanmartin.cristobal@gmail.com',
-                from_name: data.nombre,
-                from_email: data.email,
-                subject: `Nueva Solicitud de Asesoría - ${data.tipo} (${data.area})`,
-                message: mensajeCompleto,
-                cliente_nombre: data.nombre,
-                cliente_email: data.email,
-                cliente_telefono: data.telefono,
-                area_interes: data.area,
-                tipo_asesoria: data.tipo,
-                mensaje_cliente: data.mensaje,
-                fecha: data.fecha_solicitud,
-                hora: data.hora_solicitud
+                cliente_nombre: formData.get('nombre').trim(),
+                cliente_email: formData.get('email').trim(),
+                cliente_telefono: formData.get('telefono').trim(),
+                area_interes: formData.get('area'),
+                tipo_asesoria: formData.get('tipo'),
+                mensaje_cliente: formData.get('mensaje').trim(),
+                fecha: new Date().toLocaleDateString('es-CL'),
+                hora: new Date().toLocaleTimeString('es-CL', {hour: '2-digit', minute:'2-digit'})
             };
             
-            // ✅ Enviar con EmailJS — ¡CONFIGURADO!
+            console.log('📤 Enviando datos:', templateParams);
+            
+            // ✅ Enviar email con parámetros corregidos
             emailjs.send('service_hh0614b', 'template_lcbge69', templateParams)
                 .then(function(response) {
                     console.log('✅ Email enviado exitosamente!', response.status, response.text);
                     mostrarExito();
-                }, function(error) {
-                    console.log('❌ Error al enviar email:', error);
+                })
+                .catch(function(error) {
+                    console.error('❌ Error al enviar:', error);
                     mostrarError();
                 });
             
             function mostrarExito() {
                 button.innerHTML = '<i class="fas fa-check mr-2"></i>¡Solicitud Enviada!';
-                button.classList.replace('bg-purple-600', 'bg-green-600');
-                button.classList.replace('hover:bg-purple-700', 'hover:bg-green-700');
+                button.className = button.className.replace('bg-purple-600 hover:bg-purple-700', 'bg-green-600 hover:bg-green-700');
                 
-                // Mostrar mensaje de éxito
+                // Mensaje de éxito
                 const successMessage = document.createElement('div');
                 successMessage.className = 'mt-4 p-4 bg-green-50 border border-green-200 rounded-lg';
                 successMessage.innerHTML = `
                     <div class="flex items-center">
-                        <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                        <i class="fas fa-check-circle text-green-500 mr-3"></i>
                         <div>
                             <p class="font-semibold text-green-800">¡Solicitud enviada exitosamente!</p>
-                            <p class="text-sm text-green-600">Te contactaré pronto al email: ${data.email}</p>
+                            <p class="text-sm text-green-600">Te contactaré pronto al email: ${templateParams.cliente_email}</p>
                         </div>
                     </div>
                 `;
-                this.appendChild(successMessage);
+                form.appendChild(successMessage);
                 
+                // Reset después de 5 segundos
                 setTimeout(() => {
-                    this.reset();
+                    form.reset();
                     button.innerHTML = originalText;
                     button.disabled = false;
-                    button.classList.replace('bg-green-600', 'bg-purple-600');
-                    button.classList.replace('hover:bg-green-700', 'hover:bg-purple-700');
-                    if (successMessage.parentNode) {
-                        successMessage.parentNode.removeChild(successMessage);
+                    button.className = button.className.replace('bg-green-600 hover:bg-green-700', 'bg-purple-600 hover:bg-purple-700');
+                    if (successMessage && successMessage.parentNode) {
+                        successMessage.remove();
                     }
-                }, 4000);
+                }, 5000);
             }
             
             function mostrarError() {
                 button.innerHTML = '<i class="fas fa-exclamation-triangle mr-2"></i>Error al enviar';
-                button.classList.replace('bg-purple-600', 'bg-red-600');
-                button.classList.replace('hover:bg-purple-700', 'hover:bg-red-700');
+                button.className = button.className.replace('bg-purple-600 hover:bg-purple-700', 'bg-red-600 hover:bg-red-700');
                 
+                // Mensaje de error
                 const errorMessage = document.createElement('div');
                 errorMessage.className = 'mt-4 p-4 bg-red-50 border border-red-200 rounded-lg';
                 errorMessage.innerHTML = `
                     <div class="flex items-center">
-                        <i class="fas fa-exclamation-triangle text-red-500 mr-2"></i>
+                        <i class="fas fa-exclamation-triangle text-red-500 mr-3"></i>
                         <div>
                             <p class="font-semibold text-red-800">Error al enviar la solicitud</p>
-                            <p class="text-sm text-red-600">Por favor, intenta nuevamente o contáctame directamente por Instagram</p>
+                            <p class="text-sm text-red-600">Por favor intenta nuevamente o contáctame por Instagram</p>
                         </div>
                     </div>
                 `;
-                this.appendChild(errorMessage);
+                form.appendChild(errorMessage);
                 
+                // Reset después de 4 segundos
                 setTimeout(() => {
                     button.innerHTML = originalText;
                     button.disabled = false;
-                    button.classList.replace('bg-red-600', 'bg-purple-600');
-                    button.classList.replace('hover:bg-red-700', 'hover:bg-purple-700');
-                    if (errorMessage.parentNode) {
-                        errorMessage.parentNode.removeChild(errorMessage);
+                    button.className = button.className.replace('bg-red-600 hover:bg-red-700', 'bg-purple-600 hover:bg-purple-700');
+                    if (errorMessage && errorMessage.parentNode) {
+                        errorMessage.remove();
                     }
-                }, 3000);
+                }, 4000);
             }
         });
 
@@ -507,4 +441,3 @@ Solicitud generada automáticamente desde el sitio web de asesorías fonoaudiol�
     </script>
 </body>
 </html>
-```

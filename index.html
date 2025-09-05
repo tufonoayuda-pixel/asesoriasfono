@@ -1,0 +1,511 @@
+```html
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asesorías Fonoaudiológicas - Flgo. Cristóbal San Martín</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .card-hover {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        .pulse-animation {
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="gradient-bg text-white py-20">
+        <div class="container mx-auto px-4 text-center">
+            <div class="floating mb-8">
+                <i class="fas fa-user-md text-6xl mb-4"></i>
+            </div>
+            <h1 class="text-5xl font-bold mb-4">Flgo. Cristóbal San Martín</h1>
+            <p class="text-xl mb-8 max-w-2xl mx-auto">Asesorías Fonoaudiológicas Especializadas para Estudiantes y Profesionales</p>
+            <div class="flex justify-center space-x-4">
+                <a href="#contacto" class="bg-white text-purple-600 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition duration-300">
+                    <i class="fas fa-calendar-alt mr-2"></i>Agendar Asesoría
+                </a>
+                <a href="https://instagram.com/flgo_crissanmartin" target="_blank" class="border-2 border-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-purple-600 transition duration-300">
+                    <i class="fab fa-instagram mr-2"></i>Sígueme
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Características principales -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">¿Por qué elegir mis asesorías?</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="text-center card-hover bg-white p-6 rounded-lg shadow-lg">
+                    <div class="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-clock text-blue-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Sesiones de 1 Hora</h3>
+                    <p class="text-gray-600">Tiempo completo dedicado a resolver tus dudas y potenciar tus habilidades profesionales.</p>
+                </div>
+                <div class="text-center card-hover bg-white p-6 rounded-lg shadow-lg">
+                    <div class="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-video text-green-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Modalidad Online</h3>
+                    <p class="text-gray-600">Asesorías cómodas desde tu casa mediante plataforma Google Meet.</p>
+                </div>
+                <div class="text-center card-hover bg-white p-6 rounded-lg shadow-lg">
+                    <div class="bg-purple-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-headset text-purple-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Soporte Continuo</h3>
+                    <p class="text-gray-600">Contacto directo con asistente para resolución de dudas adicionales.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Áreas de especialización -->
+    <section class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Áreas de Especialización</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-white p-6 rounded-lg shadow-lg card-hover">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-utensils text-blue-600 text-2xl mr-3"></i>
+                        <h3 class="text-xl font-semibold">Deglución</h3>
+                    </div>
+                    <ul class="text-gray-600 space-y-1">
+                        <li>• Trastornos de la Deglución en Adultos</li>
+                        <li>• Trastornos de la Deglución Pediátrico</li>
+                    </ul>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-lg card-hover">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-microphone text-green-600 text-2xl mr-3"></i>
+                        <h3 class="text-xl font-semibold">Voz</h3>
+                    </div>
+                    <ul class="text-gray-600 space-y-1">
+                        <li>• Disfonías Orgánicas</li>
+                        <li>• Disfonías Funcionales</li>
+                        <li>• Voz Cantada</li>
+                        <li>• Voz Cantada-Hablada</li>
+                    </ul>
+                </div>
+
+                <div class="bg-white p-6 rounded-lg shadow-lg card-hover">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-smile text-purple-600 text-2xl mr-3"></i>
+                        <h3 class="text-xl font-semibold">Motricidad Orofacial</h3>
+                    </div>
+                    <ul class="text-gray-600 space-y-1">
+                        <li>• Desorden Miofuncional Orofacial</li>
+                        <li>• Parálisis Facial</li>
+                    </ul>
+                </div>
+
+                <div class="bg-white p-6 rounded-lg shadow-lg card-hover">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-comments text-orange-600 text-2xl mr-3"></i>
+                        <h3 class="text-xl font-semibold">Habla</h3>
+                    </div>
+                    <ul class="text-gray-600 space-y-1">
+                        <li>• Trastornos de los Sonidos del Habla</li>
+                        <li>• Disartria</li>
+                    </ul>
+                </div>
+
+                <div class="bg-white p-6 rounded-lg shadow-lg card-hover">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-language text-red-600 text-2xl mr-3"></i>
+                        <h3 class="text-xl font-semibold">Lenguaje</h3>
+                    </div>
+                    <ul class="text-gray-600 space-y-1">
+                        <li>• Afasia</li>
+                        <li>• TDL / TL</li>
+                    </ul>
+                </div>
+
+                <div class="bg-white p-6 rounded-lg shadow-lg card-hover">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-brain text-indigo-600 text-2xl mr-3"></i>
+                        <h3 class="text-xl font-semibold">Cognición</h3>
+                    </div>
+                    <ul class="text-gray-600 space-y-1">
+                        <li>• Trastorno Cognitivo-Comunicativo</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tipos de asesoría -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Tipos de Asesoría Disponibles</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-lg shadow-lg card-hover">
+                    <div class="text-center mb-4">
+                        <i class="fas fa-search text-blue-600 text-3xl mb-2"></i>
+                        <h3 class="text-xl font-semibold">Análisis de Casos</h3>
+                    </div>
+                    <p class="text-gray-600 text-center">Revisión detallada y análisis profesional de casos clínicos específicos.</p>
+                </div>
+
+                <div class="bg-gradient-to-br from-green-50 to-green-100 p-6 rounded-lg shadow-lg card-hover">
+                    <div class="text-center mb-4">
+                        <i class="fas fa-route text-green-600 text-3xl mb-2"></i>
+                        <h3 class="text-xl font-semibold">Planificación Terapéutica</h3>
+                    </div>
+                    <p class="text-gray-600 text-center">Orientaciones especializadas en planificación de tratamientos por área.</p>
+                </div>
+
+                <div class="bg-gradient-to-br from-purple-50 to-purple-100 p-6 rounded-lg shadow-lg card-hover">
+                    <div class="text-center mb-4">
+                        <i class="fas fa-presentation text-purple-600 text-3xl mb-2"></i>
+                        <h3 class="text-xl font-semibold">Simulación de Defensa</h3>
+                    </div>
+                    <p class="text-gray-600 text-center">Preparación para defensas de casos clínicos infanto-juvenil y adultos.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Formulario de contacto -->
+    <section id="contacto" class="py-16 gradient-bg">
+        <div class="container mx-auto px-4">
+            <div class="max-w-2xl mx-auto">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold mb-4 text-white">¿Listo para potenciar tus habilidades?</h2>
+                    <p class="text-lg text-white opacity-90">Completa el formulario y te contactaré para agendar tu asesoría personalizada</p>
+                </div>
+                
+                <form class="bg-white p-8 rounded-lg shadow-2xl" id="contactForm">
+                    <div class="grid md:grid-cols-2 gap-6 mb-6">
+                        <div>
+                            <label class="block text-gray-700 font-semibold mb-2" for="nombre">
+                                <i class="fas fa-user mr-2"></i>Nombre Completo
+                            </label>
+                            <input type="text" id="nombre" name="nombre" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 font-semibold mb-2" for="email">
+                                <i class="fas fa-envelope mr-2"></i>Email
+                            </label>
+                            <input type="email" id="email" name="email" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+                        </div>
+                    </div>
+                    
+                    <div class="mb-6">
+                        <label class="block text-gray-700 font-semibold mb-2" for="telefono">
+                            <i class="fas fa-phone mr-2"></i>Teléfono
+                        </label>
+                        <input type="tel" id="telefono" name="telefono" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-6 mb-6">
+                        <div>
+                            <label class="block text-gray-700 font-semibold mb-2" for="area">
+                                <i class="fas fa-stethoscope mr-2"></i>Área de Interés
+                            </label>
+                            <select id="area" name="area" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+                                <option value="">Seleccionar área...</option>
+                                <option value="Deglución">Deglución</option>
+                                <option value="Voz">Voz</option>
+                                <option value="Motricidad Orofacial">Motricidad Orofacial</option>
+                                <option value="Habla">Habla</option>
+                                <option value="Lenguaje">Lenguaje</option>
+                                <option value="Cognición">Cognición</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 font-semibold mb-2" for="tipo">
+                                <i class="fas fa-clipboard-list mr-2"></i>Tipo de Asesoría
+                            </label>
+                            <select id="tipo" name="tipo" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+                                <option value="">Seleccionar tipo...</option>
+                                <option value="Análisis de Casos">Análisis de Casos</option>
+                                <option value="Orientaciones en la Planificación Terapéutica">Planificación Terapéutica</option>
+                                <option value="Simulación de Defensa de Casos Clínicos">Simulación de Defensa</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="mb-6">
+                        <label class="block text-gray-700 font-semibold mb-2" for="mensaje">
+                            <i class="fas fa-comment-alt mr-2"></i>Mensaje Adicional
+                        </label>
+                        <textarea id="mensaje" name="mensaje" rows="4" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent" placeholder="Describe tu caso específico o las dudas que quieres resolver..."></textarea>
+                    </div>
+
+                    <div class="text-center">
+                        <button type="submit" class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-8 rounded-full transition duration-300 transform hover:scale-105">
+                            <i class="fas fa-paper-plane mr-2"></i>Enviar Solicitud
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Flgo. Cristóbal San Martín</h3>
+                    <p class="text-gray-400">Asesorías fonoaudiológicas especializadas para estudiantes de último año y recién egresados.</p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Contacto</h3>
+                    <div class="space-y-2">
+                        <p class="text-gray-400"><i class="fas fa-video mr-2"></i>Modalidad Online (Google Meet)</p>
+                        <p class="text-gray-400"><i class="fas fa-clock mr-2"></i>Sesiones de 1 hora</p>
+                        <p class="text-gray-400"><i class="fas fa-headset mr-2"></i>Soporte continuo</p>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Sígueme</h3>
+                    <a href="https://instagram.com/flgo_crissanmartin" target="_blank" class="inline-flex items-center bg-gradient-to-r from-purple-500 to-pink-500 text-white px-6 py-3 rounded-full hover:from-purple-600 hover:to-pink-600 transition duration-300">
+                        <i class="fab fa-instagram mr-2"></i>@flgo_crissanmartin
+                    </a>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+                <p class="text-gray-400">&copy; 2024 Flgo. Cristóbal San Martín - Todos los derechos reservados</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // ✅ Inicializar EmailJS con tu clave pública real
+        (function(){
+            emailjs.init("symCTdiXs_V4wtCaj"); // ¡ESTÁ CONFIGURADO!
+        })();
+
+        // Crear más iconos dinámicamente para efecto continuo
+        function createFallingIcon() {
+            const icons = [
+                'fas fa-microphone', 'fas fa-brain', 'fas fa-comments', 'fas fa-stethoscope',
+                'fas fa-heartbeat', 'fas fa-user-md', 'fas fa-pills', 'fas fa-lungs',
+                'fas fa-hand-holding-heart', 'fas fa-smile', 'fas fa-utensils',
+                'fas fa-language', 'fas fa-ear-listen', 'fas fa-volume-high',
+                'fas fa-head-side-virus', 'fas fa-puzzle-piece', 'fas fa-child',
+                'fas fa-graduation-cap', 'fas fa-clipboard-list'
+            ];
+            
+            const speeds = ['slow', 'medium', 'fast'];
+            const container = document.querySelector('.falling-icons');
+            
+            if (container) {
+                const icon = document.createElement('i');
+                icon.className = `falling-icon ${icons[Math.floor(Math.random() * icons.length)]} ${speeds[Math.floor(Math.random() * speeds.length)]}`;
+                icon.style.left = Math.random() * 100 + '%';
+                icon.style.animationDelay = '0s';
+                
+                container.appendChild(icon);
+                
+                // Remover el icono después de la animación
+                setTimeout(() => {
+                    if (icon.parentNode) {
+                        icon.parentNode.removeChild(icon);
+                    }
+                }, 15000);
+            }
+        }
+
+        // Crear iconos cada cierto tiempo
+        setInterval(createFallingIcon, 2000);
+
+        // Animación de scroll suave
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                target.scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Manejo del formulario con envío de email
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const button = this.querySelector('button[type="submit"]');
+            const originalText = button.innerHTML;
+            
+            // Mostrar estado de carga
+            button.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Enviando...';
+            button.disabled = true;
+            
+            // Recopilar datos del formulario
+            const formData = new FormData(this);
+            const data = {
+                nombre: formData.get('nombre'),
+                email: formData.get('email'),
+                telefono: formData.get('telefono'),
+                area: formData.get('area'),
+                tipo: formData.get('tipo'),
+                mensaje: formData.get('mensaje'),
+                fecha_solicitud: new Date().toLocaleDateString('es-CL'),
+                hora_solicitud: new Date().toLocaleTimeString('es-CL')
+            };
+            
+            // Crear el mensaje completo para el email
+            const mensajeCompleto = `
+Nueva Solicitud de Asesoría Fonoaudiológica
+
+📋 DATOS DEL CLIENTE:
+• Nombre: ${data.nombre}
+• Email: ${data.email}
+• Teléfono: ${data.telefono}
+• Fecha de solicitud: ${data.fecha_solicitud}
+• Hora de solicitud: ${data.hora_solicitud}
+
+🎯 DETALLES DE LA ASESORÍA:
+• Área de interés: ${data.area}
+• Tipo de asesoría: ${data.tipo}
+
+💬 MENSAJE ADICIONAL:
+${data.mensaje}
+
+---
+Solicitud generada automáticamente desde el sitio web de asesorías fonoaudiológicas.
+            `;
+
+            // Parámetros para EmailJS
+            const templateParams = {
+                to_email: 'flgo.sanmartin.cristobal@gmail.com',
+                from_name: data.nombre,
+                from_email: data.email,
+                subject: `Nueva Solicitud de Asesoría - ${data.tipo} (${data.area})`,
+                message: mensajeCompleto,
+                cliente_nombre: data.nombre,
+                cliente_email: data.email,
+                cliente_telefono: data.telefono,
+                area_interes: data.area,
+                tipo_asesoria: data.tipo,
+                mensaje_cliente: data.mensaje,
+                fecha: data.fecha_solicitud,
+                hora: data.hora_solicitud
+            };
+            
+            // ✅ Enviar con EmailJS — ¡CONFIGURADO!
+            emailjs.send('service_hh0614b', 'template_lcbge69', templateParams)
+                .then(function(response) {
+                    console.log('✅ Email enviado exitosamente!', response.status, response.text);
+                    mostrarExito();
+                }, function(error) {
+                    console.log('❌ Error al enviar email:', error);
+                    mostrarError();
+                });
+            
+            function mostrarExito() {
+                button.innerHTML = '<i class="fas fa-check mr-2"></i>¡Solicitud Enviada!';
+                button.classList.replace('bg-purple-600', 'bg-green-600');
+                button.classList.replace('hover:bg-purple-700', 'hover:bg-green-700');
+                
+                // Mostrar mensaje de éxito
+                const successMessage = document.createElement('div');
+                successMessage.className = 'mt-4 p-4 bg-green-50 border border-green-200 rounded-lg';
+                successMessage.innerHTML = `
+                    <div class="flex items-center">
+                        <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                        <div>
+                            <p class="font-semibold text-green-800">¡Solicitud enviada exitosamente!</p>
+                            <p class="text-sm text-green-600">Te contactaré pronto al email: ${data.email}</p>
+                        </div>
+                    </div>
+                `;
+                this.appendChild(successMessage);
+                
+                setTimeout(() => {
+                    this.reset();
+                    button.innerHTML = originalText;
+                    button.disabled = false;
+                    button.classList.replace('bg-green-600', 'bg-purple-600');
+                    button.classList.replace('hover:bg-green-700', 'hover:bg-purple-700');
+                    if (successMessage.parentNode) {
+                        successMessage.parentNode.removeChild(successMessage);
+                    }
+                }, 4000);
+            }
+            
+            function mostrarError() {
+                button.innerHTML = '<i class="fas fa-exclamation-triangle mr-2"></i>Error al enviar';
+                button.classList.replace('bg-purple-600', 'bg-red-600');
+                button.classList.replace('hover:bg-purple-700', 'hover:bg-red-700');
+                
+                const errorMessage = document.createElement('div');
+                errorMessage.className = 'mt-4 p-4 bg-red-50 border border-red-200 rounded-lg';
+                errorMessage.innerHTML = `
+                    <div class="flex items-center">
+                        <i class="fas fa-exclamation-triangle text-red-500 mr-2"></i>
+                        <div>
+                            <p class="font-semibold text-red-800">Error al enviar la solicitud</p>
+                            <p class="text-sm text-red-600">Por favor, intenta nuevamente o contáctame directamente por Instagram</p>
+                        </div>
+                    </div>
+                `;
+                this.appendChild(errorMessage);
+                
+                setTimeout(() => {
+                    button.innerHTML = originalText;
+                    button.disabled = false;
+                    button.classList.replace('bg-red-600', 'bg-purple-600');
+                    button.classList.replace('hover:bg-red-700', 'hover:bg-purple-700');
+                    if (errorMessage.parentNode) {
+                        errorMessage.parentNode.removeChild(errorMessage);
+                    }
+                }, 3000);
+            }
+        });
+
+        // Animaciones de entrada
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.card-hover').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
+```
